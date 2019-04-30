@@ -176,7 +176,7 @@ return [
         // laravel  Data table 
         Yajra\Datatables\DataTablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class, 
+        //Barryvdh\Debugbar\ServiceProvider::class, 
         // laravel permission 
         Spatie\Permission\PermissionServiceProvider::class,
         // Snappy PDF/Image Wrapper for Laravel 5
