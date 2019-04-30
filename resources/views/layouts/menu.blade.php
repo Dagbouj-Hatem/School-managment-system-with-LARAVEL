@@ -3,7 +3,6 @@
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
     <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Utilisateurs</span></a>
 </li>
-@endrole
 
 <li class="{{ Request::is('roles*') ? 'active' : '' }}">
     <a href="{!! route('roles.index') !!}"><i class="fa fa-check"></i><span>Rôles</span></a>
@@ -12,6 +11,7 @@
 <li class="{{ Request::is('permissions*') ? 'active' : '' }}">
     <a href="{!! route('permissions.index') !!}"><i class="fa fa-check-circle"></i><span>Autorisations</span></a>
 </li>
+@endrole
 
 <li class="{{ Request::is('levels*') ? 'active' : '' }}">
     <a href="{!! route('levels.index') !!}"><i class="fa fa-briefcase"></i><span>Niveaux</span></a>
