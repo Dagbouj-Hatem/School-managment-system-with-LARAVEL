@@ -39,9 +39,9 @@
 <li class="{{ Request::is('sujetForums*') ? 'active' : '' }}">
     <a href="{!! route('sujetForums.index') !!}"><i class="fa fa-comments"></i><span>Sujets de discussion</span></a>
 </li>
-<li class="{{ Request::is('calendar*') ? 'active' : '' }}">
+<!--li class="{{ Request::is('calendar*') ? 'active' : '' }}">
     <a href="{!! route('calendar') !!}"><i class="fa fa-calendar"></i><span>Calendrier des examens</span></a>
-</li>
+</li-->
 @hasanyrole('Administrateur|Super administrateur|Enseignant')
 <li class="{{ Request::is('typeExamens*') ? 'active' : '' }}">
     <a href="{!! route('typeExamens.index') !!}"><i class="fa fa-tags"></i><span>Type d'examen</span></a>

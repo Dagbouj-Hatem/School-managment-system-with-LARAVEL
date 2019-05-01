@@ -1,7 +1,7 @@
 <div class="col-3">
     <!-- Avatar Field -->
     <div class="form-group"> 
-        <img src="{!! $user->avatar !!}" >
+        <img src="{!! $user->avatar !!}" width="100" height="100">
     </div>
 </div>
 

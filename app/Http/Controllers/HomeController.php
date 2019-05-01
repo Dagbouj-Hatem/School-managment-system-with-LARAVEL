@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Calendar;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,25 @@ class HomeController extends Controller
         $books = \App\Book::all()->count();
         $msgs= \App\MessageForum::all()->count();
         //dd( $msg);
-        return view('home',compact('users','books','msgs'));
+        $events = [];
+        $data = \App\Examen::all();
+        if($data->count()) {
+            foreach ($data as $e) {
+                $events[] = Calendar::event(
+                    $e->name,
+                    true,
+                    new \DateTime($e->date),
+                    new \DateTime($e->date.' +1 day'),
+                    null,
+                    // Add color and link on event
+                    [
+                        'color' => '#f05050',
+                        //'url' => 'pass here url and any route',
+                    ]
+                );
+            }
+        }
+        $calendar = Calendar::addEvents($events);
+        return view('home',compact('users','books','msgs','calendar'));
     }
 }
