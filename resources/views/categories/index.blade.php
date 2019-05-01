@@ -5,7 +5,8 @@
     <h2>Gestion des catégories</h2>
     <section class="content-header"> 
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('categories.create') !!}"><i class="fa fa-plus-circle"></i> ajouter une catégorie</a>
+            @can('Ajouter une catégorie')
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('categories.create') !!}"><i class="fa fa-plus-circle"></i> ajouter une catégorie</a> @endcan
         </h1>
     </section>
     <div class="blankpage-main">

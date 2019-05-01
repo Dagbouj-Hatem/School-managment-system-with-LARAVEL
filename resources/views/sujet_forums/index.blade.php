@@ -5,7 +5,8 @@
     <h2>Gestion des sujets</h2>
     <section class="content-header"> 
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('sujetForums.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un sujet</a>
+            @can('Ajouter un sujet')
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('sujetForums.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un sujet</a> @endcan
         </h1>
     </section>
     <div class="blankpage-main">

@@ -179,7 +179,9 @@ return [
 
         // debug bar
         //Barryvdh\Debugbar\ServiceProvider::class, 
-        
+
+        // full calendar 
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         // laravel permission 
         Spatie\Permission\PermissionServiceProvider::class,
         // Snappy PDF/Image Wrapper for Laravel 5
@@ -250,6 +252,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
     ],
 
 ];

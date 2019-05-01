@@ -16,13 +16,9 @@ class RolesTableSeeder extends Seeder
     	if(DB::table('roles')->get()->count()<=1)
     	{
           // insert roles
-            Role::create(['name' => 'Administrateur' ]);
-            Role::create(['name' => 'Etudiant']);
-            Role::create(['name' => 'Enseignant' ]);
-            Role::create(['name' => 'Tutors']);
         }else
         {
-        	echo "Table ROLES not empty ! \n";
+        	//echo "Table ROLES not empty ! \n";
         }
     }
 }

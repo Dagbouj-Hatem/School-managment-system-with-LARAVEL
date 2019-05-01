@@ -1,7 +1,13 @@
 <!-- Name Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-6">
     {!! Form::label('name', 'Nom:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Date Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('date', 'Date d\'examen:') !!}
+    {!! Form::date('date', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Description Field -->

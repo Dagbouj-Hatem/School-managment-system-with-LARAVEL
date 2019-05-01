@@ -4,6 +4,12 @@
     <p>{!! $examen->id !!}</p>
 </div>
 
+<!-- Date Field -->
+<div class="form-group">
+    {!! Form::label('date', 'Date d\'examen:') !!} 
+    <p>{!! $examen->date !!}</p>
+</div>
+
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', 'Nom:') !!}

@@ -5,7 +5,8 @@
     <h2>Gestion des examens</h2>
     <section class="content-header"> 
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('examens.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un examen</a>
+            @can('Ajouter un examen')
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('examens.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un examen</a> @endcan
         </h1>
     </section>
     <div class="blankpage-main">

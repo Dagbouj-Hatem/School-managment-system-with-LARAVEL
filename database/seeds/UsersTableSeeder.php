@@ -19,7 +19,25 @@ class UsersTableSeeder extends Seeder
         //test if table is empty
         if(DB::table('users')->get()->count()==0)
         {    
-            // insert a default administrator 
+            // insert a default super administrator 
+            User::create([
+            'first_name' => $faker->firstNameMale ,
+            'last_name' => $faker->lastName ,
+            'date_of_birthday' => $faker->dateTime ,
+            'address1' => $faker->address ,
+            'address2' => $faker->address ,
+            'city' => $faker->city ,
+            'zipcode' => $faker->postcode ,
+            'avatar' => $faker->unique()->imageUrl($width = 50, $height = 50 ,'people'), 
+            'phone' => $faker->e164PhoneNumber , 
+            'email' => 'superadmin@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+            'type_account' => '0' ,
+            'remember_token' => str_random(10),
+            ])->assignRole('Super administrateur');
+
+             // insert a default administrator 
             User::create([
             'first_name' => $faker->firstNameMale ,
             'last_name' => $faker->lastName ,
@@ -89,7 +107,7 @@ class UsersTableSeeder extends Seeder
             ])->assignRole('Tutors');
             
             // insert 20 others users
-            factory(App\User::class, 20)->create()->each(function ($user) {
+       /*     factory(App\User::class, 20)->create()->each(function ($user) {
 
                     // Adding permissions via a role 
                     if($user->type_account==0)
@@ -109,7 +127,7 @@ class UsersTableSeeder extends Seeder
                         $user->assignRole('Tutors');
                     }
                     // end roles 
-             });
+             });*/
 
         }else
         {

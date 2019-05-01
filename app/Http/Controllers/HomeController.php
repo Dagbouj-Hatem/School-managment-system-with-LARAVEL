@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = \App\User::all()->count();
+        $books = \App\Book::all()->count();
+        $msgs= \App\MessageForum::all()->count();
+        //dd( $msg);
+        return view('home',compact('users','books','msgs'));
     }
 }

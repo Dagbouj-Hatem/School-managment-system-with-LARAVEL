@@ -7,7 +7,9 @@
     </h2>
     <section class="content-header"> 
         <h1 class="pull-right">
+             @can('Ajouter un livre')
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('books.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un livre</a>
+            @endcan
         </h1>
     </section>
     <div class="blankpage-main">

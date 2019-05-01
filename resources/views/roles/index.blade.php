@@ -5,7 +5,9 @@
     <h2>Gestion des rôles</h2>
     <section class="content-header"> 
         <h1 class="pull-right">
+        @can('Ajouter un role')
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('roles.create') !!}"><i class="fa fa-plus-circle"></i> Ajouter un rôle</a>
+        @endcan
         </h1>
     </section>
     <div class="blankpage-main">

@@ -29,6 +29,7 @@ class Examen extends Model
 
     public $fillable = [
         'name',
+        'date',
         'description',
         'file',
         'matiere_id',
@@ -43,6 +44,7 @@ class Examen extends Model
      */
     protected $casts = [
         'name' => 'string',
+        'date' => 'string',
         'description' => 'string',
         'file' => 'string',
         'matiere_id' => 'integer',
@@ -57,6 +59,7 @@ class Examen extends Model
      */
     public static $rules = [
         'name' => 'required',
+        'date' => 'required|date',
         'description' => 'required'
     ];
 

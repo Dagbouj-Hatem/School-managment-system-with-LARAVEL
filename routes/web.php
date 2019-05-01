@@ -58,6 +58,7 @@ Route::resource('typeExamens', 'TypeExamenController');
 Route::resource('matieres', 'MatiereController');
 
 Route::resource('examens', 'ExamenController');
+Route::get('calendar', 'ExamenController@calendar')->name('calendar');
 
 // begin  message examen
 Route::resource('messageExamens', 'MessageExamenController');

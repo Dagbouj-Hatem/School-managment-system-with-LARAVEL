@@ -11,6 +11,7 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 use Illuminate\Support\Facades\Storage;
+use Calendar;
 
 class ExamenController extends AppBaseController
 {
@@ -186,5 +187,29 @@ class ExamenController extends AppBaseController
         Flash::success('Examen supprimé avec succès.');
 
         return redirect(route('examens.index'));
+    }
+
+    public function  calendar()
+    {
+        $events = [];
+        $data = \App\Examen::all();
+        if($data->count()) {
+            foreach ($data as $e) {
+                $events[] = Calendar::event(
+                    $e->name,
+                    true,
+                    new \DateTime($e->date),
+                    new \DateTime($e->date.' +1 day'),
+                    null,
+                    // Add color and link on event
+                    [
+                        'color' => '#f05050',
+                        //'url' => 'pass here url and any route',
+                    ]
+                );
+            }
+        }
+        $calendar = Calendar::addEvents($events);
+        return view('fullcalender', compact('calendar'));
     }
 }
