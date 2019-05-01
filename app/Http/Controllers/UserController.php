@@ -104,6 +104,21 @@ class UserController extends AppBaseController
     }
 
     /**
+     * Display Profile of the specified User.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function profile($id)
+    {
+        $user = $this->userRepository->findWithoutFail($id);
+ 
+
+        return view('users.profile')->with('user', $user);
+    }
+
+    /**
      * Show the form for editing the specified User.
      *
      * @param  int $id
@@ -122,6 +137,19 @@ class UserController extends AppBaseController
         // get roles 
         $roles= Role::pluck('name','id');
         return view('users.edit', compact('roles'))->with('user', $user);
+    } 
+
+    /**
+     * Show the form for editing the specified User.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function settings($id)
+    {
+        $user = $this->userRepository->findWithoutFail($id);
+        return view('users.settings')->with('user', $user);
     }
 
     /**
@@ -193,6 +221,56 @@ class UserController extends AppBaseController
         Flash::success('Mis à jour avec succès.');
 
         return redirect(route('users.index'));
+    }
+
+    public function settings_save($id, UpdateUserRequest $request)
+    {
+        $user = $this->userRepository->findWithoutFail($id);
+
+        if (empty($user)) {
+            Flash::error('Utilisateur non trouvé.');
+
+            return redirect(route('users.index'));
+        }
+        // test sur le mot de passe 
+        if($request->password)
+        {   // l'utilisateur donne son password
+            // alors décrypter le password
+            $request->merge(['password' => bcrypt($request->password)]);
+        }else
+        {
+            // l'utilisateur ne donne pas son password
+            $request->merge(['password' => $user->password]);
+        }
+        // end test password
+
+        // get  avatar name 
+        $last_photo = $user->avatar;
+
+        $user = $this->userRepository->update($request->all(), $id);
+
+         // begin avatar section  
+        if($request->file('avatar'))
+        {
+            $path = Storage::disk('public')->put('avatars',$request->file('avatar')); 
+            $user->fill(['avatar'=> asset($path)])->save();
+
+            //delete old image 
+                $exists = Storage::disk('public')->exists('avatars',$last_photo);
+
+                if($exists)
+                {   
+                    $file = basename($last_photo);  
+                   // dd($file);
+                    Storage::disk('public')->delete('avatars/'.$file);
+                }
+            // end delete old image
+        }
+        // end photo section 
+        // end update user 
+        Flash::success('Profil mis à jour avec succès.');
+
+        return back();
     }
 
     /**

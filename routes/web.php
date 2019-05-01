@@ -22,6 +22,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UserController');
+Route::get('users/profile/{id}', 'UserController@profile')->name('profile');
+Route::get('users/settings/{id}', 'UserController@settings')->name('settings');
+Route::patch('users/{id}/save', 'UserController@settings_save')->name('settings_save');
 
 Route::resource('books', 'BookController');
 

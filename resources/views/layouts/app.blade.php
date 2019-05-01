@@ -133,7 +133,7 @@
                                             <div class="profile_img">   
                                                 <span class="prfil-img">
                                                 @if(Auth::user()->avatar)
-                                                   <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User profile picture">
+                                                   <img class="img img-circle" src="{{ Auth::user()->avatar }}" alt="User profile picture" width="50" height="50">
                                                 @else
                                                   <img class="img-circle" src="https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-male-3-512.png" alt="User profile picture">
                                                 @endif   
@@ -148,8 +148,8 @@
                                             </div>  
                                         </a>
                                         <ul class="dropdown-menu drp-mnu">
-                                            <li> <a href="{{ route('users.edit',Auth::user()->id) }}"><i class="fa fa-cog"></i> Paramètres</a> </li> 
-                                            <li> <a href="{{ route('users.show',Auth::user()->id) }}"><i class="fa fa-user"></i> Profil</a> </li> 
+                                            <li> <a href="{{ route('settings',Auth::user()->id) }}"><i class="fa fa-cog"></i> Paramètres</a> </li> 
+                                            <li> <a href="{{ route('profile',Auth::user()->id) }}"><i class="fa fa-user"></i> Profil</a> </li> 
                                             <li>
                                                  <a href="{!! url('logout') !!}"><i class="fa fa-sign-out" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></i> Déconnexion</a> 
                                             </li>
