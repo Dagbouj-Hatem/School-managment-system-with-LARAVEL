@@ -95,4 +95,10 @@ class UserDataTable extends DataTable
     {
         return 'usersdatatable_' . time();
     }
+
+
+    public function getId()
+    {
+        return 'id';
+    }
 }

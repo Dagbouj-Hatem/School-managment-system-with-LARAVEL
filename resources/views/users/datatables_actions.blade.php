@@ -17,6 +17,9 @@
         'onclick' => "return confirm('Êtes-vous sûr de continuer la suppression?')"
     ]) !!}
     @endcan
+
+    @include('users.user_permission')
+    
 </div>
 {!! Form::close() !!}
-  
+   

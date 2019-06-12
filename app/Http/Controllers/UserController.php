@@ -12,6 +12,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use Illuminate\Support\Facades\Storage; 
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends AppBaseController
 {
@@ -32,7 +33,10 @@ class UserController extends AppBaseController
      */
     public function index(UserDataTable $userDataTable)
     {
-        return $userDataTable->render('users.index');
+        $users= \App\User::all(); 
+        $permissions = Permission::all();
+        //dd($users->firstWhere('id', 1 )->getAllPermissions());
+        return $userDataTable->render('users.index',compact('users','permissions'));
     }
 
     /**
